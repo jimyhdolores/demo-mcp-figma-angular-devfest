@@ -46,13 +46,15 @@ get_variable_defs     # Tokens: colores, tipografía, espaciado
 
 ### Componentes a Crear
 
-7 componentes standalone + app principal:
+7 componentes + app principal:
 
 - `header`, `hero`, `services`, `testimonials`, `pricing`, `team`, `footer`
 
 ### Mejores Prácticas
 
 - Usar el MCP server `angular-cli` para aplicar las mejores prácticas de Angular 20
+- Para generar componentes usar: `ng g c components/nombre-componente`
+- En Angular 20 todos los componentes son standalone por defecto (no agregar `standalone: true`)
 - SCSS con variables + metodología BEM
 - Mobile-first + accessibility (ARIA, semantic HTML)
 - **PROHIBIDO usar Tailwind u otros frameworks CSS**
@@ -81,7 +83,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
   imports: [],
   templateUrl: './header.html',
   styleUrl: './header.scss',
@@ -146,7 +147,7 @@ Repetir para: `hero`, `services`, `testimonials`, `pricing`, `team`, `footer`
 - [ ] Colores exactos de Figma
 - [ ] Espaciado consistente con diseño
 - [ ] Sin uso de Tailwind/frameworks CSS
-- [ ] Todos los componentes son standalone
+- [ ] Componentes generados con comando `ng g c`
 
 ---
 
@@ -159,3 +160,5 @@ Repetir para: `hero`, `services`, `testimonials`, `pricing`, `team`, `footer`
 - Configuración Angular: adjuntar `angular.json`, `tsconfig.json`
 
 **Formato Crítico:** El parser automático buscará los encabezados `## COMPONENT:` y `## MAIN APP COMPONENT` para crear los archivos. No alterar este formato.
+
+**Resumen Final:** Al finalizar la implementación, proporcionar un resumen **sin código**, solo indicando los componentes creados y aspectos clave implementados.
