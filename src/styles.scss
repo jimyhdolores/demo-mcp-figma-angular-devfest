@@ -1,0 +1,263 @@
+/*
+ * Global Styles
+ * --------------------------------------------------
+ * This file contains global styles, CSS custom properties (variables),
+ * a CSS reset, and base typography settings for the application.
+ */
+
+/* 1. FONT IMPORTS */
+/* -------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap');
+/* SF Pro Display is a system font, so no import is needed. It will fall back to sans-serif if not available. */
+
+/* 2. CSS CUSTOM PROPERTIES (DESIGN TOKENS) */
+/* -------------------------------------------------- */
+:root {
+  /* Colors */
+  --color-primary: #ff9900; /* Orange */
+  --color-black: #1b1b1b;
+  --color-white: #ffffff;
+  --color-text: #575757;
+  --color-background-light: #f5f5f5; /* Abu bg */
+
+  /* Typography */
+  --font-family-primary: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --font-family-secondary: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+/* 3. CSS RESET / NORMALIZE */
+/* -------------------------------------------------- */
+/* A more modern CSS reset */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 4. GLOBAL TYPOGRAPHY & BASE STYLES */
+/* -------------------------------------------------- */
+body {
+  font-family: var(--font-family-primary);
+  font-weight: 400; /* Regular */
+  font-size: 16px;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+} /* Global Styles */
+
+:root {
+  /* Colors */
+  --orange-500: #ff9900;
+  --black-900: #1b1b1b;
+  --white: #ffffff;
+  --gray-500: #575757;
+  --gray-100: #f5f5f5;
+
+  /* Typography */
+  --font-family-primary: 'Inter Tight', sans-serif;
+  --font-family-secondary: 'SF Pro Display', sans-serif;
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Font Sizes & Line Heights */
+  --h1-medium-size: 64px;
+  --h1-medium-height: 72px;
+
+  --h2-bold-size: 48px;
+  --h2-bold-height: 56px;
+
+  --h2-medium-size: 48px;
+  --h2-medium-height: 56px;
+
+  --h2-semibold-size: 48px;
+  --h2-semibold-height: 56px;
+
+  --h3-medium-size: 40px;
+  --h3-medium-height: 48px;
+
+  --h3-semibold-size: 40px;
+  --h3-semibold-height: 48px;
+
+  --h4-regular-size: 32px;
+  --h4-regular-height: 40px;
+
+  --h5-medium-size: 24px;
+  --h5-medium-height: 32px;
+
+  --h5-regular-size: 24px;
+  --h5-regular-height: 32px;
+
+  --h6-bold-size: 18px;
+  --h6-bold-height: 26px;
+
+  --h6-medium-size: 18px;
+  --h6-medium-height: 26px;
+
+  --h6-regular-size: 18px;
+  --h6-regular-height: 26px;
+
+  --body-large-regular-size: 16px;
+  --body-large-regular-height: 24px;
+
+  --body-large-medium-size: 16px;
+  --body-large-medium-height: 24px;
+
+  --body-large-semibold-size: 16px;
+  --body-large-semibold-height: 24px;
+
+  --body-medium-regular-size: 14px;
+  --body-medium-regular-height: 20px;
+
+  --body-medium-medium-size: 14px;
+  --body-medium-medium-height: 20px;
+
+  --body-medium-semibold-size: 14px;
+  --body-medium-semibold-height: 20px;
+
+  --body-small-medium-size: 12px;
+  --body-small-medium-height: 16px;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  color: var(--black-900);
+  background-color: var(--white);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #ff9900;
+  --secondary-color: #1b1b1b;
+  --text-color: #575757;
+  --background-color: #f5f5f5;
+  --white-color: #ffffff;
+
+  --font-family-base: 'Inter Tight', sans-serif;
+
+  --h1-font-size: 64px;
+  --h1-line-height: 72px;
+
+  --h2-font-size: 48px;
+  --h2-line-height: 56px;
+
+  --h3-font-size: 40px;
+  --h3-line-height: 48px;
+
+  --h4-font-size: 32px;
+  --h4-line-height: 40px;
+
+  --h5-font-size: 24px;
+  --h5-line-height: 32px;
+
+  --h6-font-size: 18px;
+  --h6-line-height: 26px;
+
+  --body-large-font-size: 16px;
+  --body-large-line-height: 24px;
+
+  --body-medium-font-size: 14px;
+  --body-medium-line-height: 20px;
+
+  --body-small-font-size: 12px;
+  --body-small-line-height: 16px;
+}
+
+body {
+  font-family: var(--font-family-base);
+  color: var(--text-color);
+  background-color: var(--white-color);
+  margin: 0;
+}
