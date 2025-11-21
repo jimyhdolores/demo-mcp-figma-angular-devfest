@@ -32,13 +32,18 @@ get_variable_defs     # Tokens: colores, tipografía, espaciado
 1. **Hero Grid**: 4 imágenes con **border-radius diferenciados** (no uniforme)
 2. **Badge Hero**: Fondo naranja semi-transparente + borde naranja sólido
 3. **Features Strip**: Barra naranja horizontal con iconos de certificado
-4. **Ornamentos SVG**: Posicionamiento absoluto con rotaciones específicas
+4. **Ornamentos SVG**: Posicionamiento absoluto con rotaciones específicas. Un mismo SVG puede aparecer múltiples veces con diferentes transformaciones (rotación, escala, color)
 5. **Logo**: SVG de patita + texto "Vetcare"
 
 ### Assets Disponibles
 
 - Imágenes: `public/images/` → referenciar como `images/archivo.jpg`
 - SVG: `public/svg/` → referenciar como `svg/icono.svg`
+- **Importante SVG dinámicos**:
+  - Todos los SVG usan `fill="currentColor"` y `stroke="currentColor"`
+  - Esto permite cambiar el color mediante la propiedad CSS `color` del elemento contenedor
+  - El mismo archivo SVG puede reutilizarse con diferentes estilos CSS (color, tamaño, rotación, opacidad)
+  - Ejemplo: `<img src="svg/icon.svg" class="icon--orange" style="color: #ff6b35; width: 32px; transform: rotate(45deg);" />`
 
 ---
 
@@ -141,7 +146,8 @@ Repetir para: `hero`, `services`, `testimonials`, `pricing`, `team`, `footer`
 - [ ] Border-radius diferenciados en imágenes hero
 - [ ] Badge hero con transparencia correcta
 - [ ] Features strip naranja implementada
-- [ ] Ornamentos SVG con rotaciones
+- [ ] Ornamentos SVG con rotaciones y transformaciones
+- [ ] Mismo SVG reutilizado con diferentes estilos (color, tamaño, rotación)
 - [ ] Tipografía Inter Tight con pesos correctos
 - [ ] Assets desde rutas correctas (`images/`, `svg/`)
 - [ ] Colores exactos de Figma

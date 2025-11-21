@@ -1,7 +1,13 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M13.27 26.7333L13.7222 26.2811C14.3261 25.6772 15.1452 25.3379 15.9992 25.3379C16.8533 25.3379 17.6724 25.6772 18.2763 26.2811L18.7285 26.7333C19.5432 27.548 20.6482 28.0057 21.8004 28.0057H22.326C24.7253 28.0057 26.6703 26.0606 26.6703 23.6613C26.6703 22.2087 25.9444 20.8523 24.7358 20.0465C23.376 19.14 22.2433 17.9325 21.4254 16.5176L20.1983 14.3947C19.3414 12.9121 17.759 11.999 16.0466 11.999C14.3621 11.999 12.8012 12.8828 11.9345 14.3272L10.561 16.6165C9.75031 17.9676 8.64974 19.1218 7.33872 19.9958L7.26269 20.0465C6.05409 20.8523 5.32812 22.2087 5.32812 23.6613C5.32812 26.0606 7.27318 28.0057 9.67252 28.0057H10.1981C11.3503 28.0057 12.4553 27.548 13.27 26.7333Z" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="5.99595" cy="12.6649" r="2.00083" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="26.0038" cy="12.6649" r="2.00083" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="11.7118" cy="5.99595" r="2.00083" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="20.287" cy="5.99595" r="2.00083" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path fill-rule="evenodd" clip-rule="evenodd"
+    d="M13.27 26.7333L13.7222 26.2811C14.3261 25.6772 15.1452 25.3379 15.9992 25.3379C16.8533 25.3379 17.6724 25.6772 18.2763 26.2811L18.7285 26.7333C19.5432 27.548 20.6482 28.0057 21.8004 28.0057H22.326C24.7253 28.0057 26.6703 26.0606 26.6703 23.6613C26.6703 22.2087 25.9444 20.8523 24.7358 20.0465C23.376 19.14 22.2433 17.9325 21.4254 16.5176L20.1983 14.3947C19.3414 12.9121 17.759 11.999 16.0466 11.999C14.3621 11.999 12.8012 12.8828 11.9345 14.3272L10.561 16.6165C9.75031 17.9676 8.64974 19.1218 7.33872 19.9958L7.26269 20.0465C6.05409 20.8523 5.32812 22.2087 5.32812 23.6613C5.32812 26.0606 7.27318 28.0057 9.67252 28.0057H10.1981C11.3503 28.0057 12.4553 27.548 13.27 26.7333Z"
+    fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="5.99595" cy="12.6649" r="2.00083" fill="currentColor" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="26.0038" cy="12.6649" r="2.00083" fill="currentColor" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="11.7118" cy="5.99595" r="2.00083" fill="currentColor" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="20.287" cy="5.99595" r="2.00083" fill="currentColor" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round" />
 </svg>
