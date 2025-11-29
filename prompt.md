@@ -5,10 +5,15 @@
 ### Principios Fundamentales (OBLIGATORIOS)
 
 1.  **MCP-First (con Excepción Crítica)**: Tu interfaz principal para interactuar con el proyecto son los MCP servers.
-    -   **PROHIBIDO usar comandos de shell directamente, CON UNA ÚNICA EXCEPCIÓN**: Para generar componentes (`ng g c ...`), DEBES usar el comando de terminal.
-    -   Para CUALQUIER OTRA operación de consulta sobre Angular (buenas prácticas, documentación), DEBES usar el MCP server `angular-cli`.
-    -   Para el análisis del diseño, DEBES usar el MCP server `figma-desktop`.
-2.  **Precisión Absoluta**: Sigue las instrucciones de este prompt al pie de la letra. No hay espacio para la interpretación. Cada detalle, desde los nombres de archivo hasta las variables SCSS, debe coincidir exactamente con lo solicitado.
+    - **PROHIBIDO usar comandos de shell directamente, CON UNA ÚNICA EXCEPCIÓN**: Para generar componentes (`ng g c ...`), DEBES usar el comando de terminal.
+    - Para CUALQUIER OTRA operación de consulta sobre Angular (buenas prácticas, documentación), DEBES usar el MCP server `angular-cli`.
+    - Para el análisis del diseño, DEBES usar el MCP server `figma-desktop`.
+2.  **Precisión Absoluta y Meticulosidad Extrema**: Sigue las instrucciones de este prompt al pie de la letra. No hay espacio para la interpretación. Cada detalle debe coincidir exactamente con el diseño de Figma:
+    - TODAS las secciones deben estar presentes
+    - TODOS los textos deben ser exactos (no inventar)
+    - CADA elemento debe tener la posición, forma, borde y color correcto
+    - CADA imagen debe tener su border-radius específico
+    - NO asumir valores uniformes, extraer cada valor de Figma
 3.  **Autonomía Basada en Reglas**: Trabaja de forma autónoma, pero SIEMPRE dentro del marco de las reglas y el flujo de trabajo definidos en este documento.
 
 ---
@@ -17,17 +22,27 @@
 
 Para que puedas ejecutar tu tarea con éxito, el siguiente contexto DEBE ser proporcionado:
 
--   **`angular.json`**: Para entender la configuración del proyecto.
--   **Contenido de `public/images/`**: Para mapear nombres de assets a archivos reales.
--   **Contenido de `public/svg/`**: Para mapear nombres de assets a archivos reales.
--   **`src/styles.scss`**: Archivo de destino para estilos globales.
--   **`src/styles/_variables.scss`**: Archivo de destino para variables de diseño.
+- **`angular.json`**: Para entender la configuración del proyecto.
+- **Contenido de `public/images/`**: Para mapear nombres de assets a archivos reales.
+- **Contenido de `public/svg/`**: Para mapear nombres de assets a archivos reales.
+- **`src/styles.scss`**: Archivo de destino para estilos globales.
+- **`src/styles/_variables.scss`**: Archivo de destino para variables de diseño.
 
 ---
 
 ## Objetivo
 
 Convertir el frame de Figma adjunto (landing page veterinaria) a una aplicación Angular 21 con precisión pixel-perfect, siguiendo el flujo de trabajo obligatorio.
+
+### Requisitos de Precisión CRÍTICOS
+
+1. **TODAS las secciones**: Implementar CADA sección visible en el diseño de Figma. NO omitir ninguna.
+2. **Textos exactos**: Usar EXACTAMENTE los mismos textos que aparecen en Figma. PROHIBIDO inventar o modificar contenido textual.
+3. **Posicionamiento exacto**: Cada elemento debe estar posicionado exactamente como en Figma (alineación, distribución, orden).
+4. **Formas precisas**: Cada imagen y elemento debe tener el border-radius específico extraído de Figma (NO uniformizar).
+5. **Bordes exactos**: Extraer border-width, border-color y border-style de cada elemento desde Figma.
+6. **Colores precisos**: Usar valores hexadecimales exactos de Figma, sin aproximaciones.
+7. **Meticulosidad extrema**: Revisar CADA detalle visual del diseño antes de considerar la tarea completa.
 
 ---
 
@@ -37,7 +52,15 @@ Convertir el frame de Figma adjunto (landing page veterinaria) a una aplicación
 
 1.  **Extraer Nombres de Assets**: Llama a `get_design_context`. Analiza su output para identificar CADA imagen y SVG. Esta es tu ÚNICA fuente para los nombres base de los assets.
 2.  **Extraer Variables de Diseño**: Llama a `get_variable_defs`. Extrae TODOS los colores, tipografías, espaciados y otros tokens de diseño.
-3.  **Validación Visual**: Llama a `get_screenshot` para tener una referencia visual que DEBES usar para validar tu trabajo.
+3.  **Extraer Contenido Textual**: Del output de `get_design_context`, extrae TODOS los textos tal como aparecen en Figma. Estos serán los textos EXACTOS que debes usar en el HTML.
+4.  **Extraer Propiedades de Elementos**: Para CADA elemento visual (imágenes, botones, cards, etc.), extrae:
+    - Border-radius específico (puede ser diferente para cada esquina)
+    - Colores (background, text, border)
+    - Dimensiones (width, height)
+    - Posicionamiento y alineación
+    - Bordes (width, style, color)
+5.  **Identificar TODAS las Secciones**: Lista TODAS las secciones presentes en el diseño (Header, Hero, Services, Estadísticas, Features, Pricing, Team, Testimonials, Footer, etc.). Asegúrate de no omitir ninguna.
+6.  **Validación Visual**: Llama a `get_screenshot` para tener una referencia visual que DEBES usar para validar tu trabajo.
 
 ### PASO 2: Creación de Variables SCSS
 
@@ -49,10 +72,14 @@ Convertir el frame de Figma adjunto (landing page veterinaria) a una aplicación
 
 ### PASO 4: Generación y Desarrollo de Componentes (Terminal)
 
-1.  **Generar Componentes (vía Terminal)**: Ejecuta el comando `ng g c components/nombre-componente` en la terminal para CADA uno de los siguientes componentes: `header`, `hero`, `services`, `testimonials`, `pricing`, `team`, `footer`. **Esta es la ÚNICA excepción permitida para usar la terminal directamente para comandos `ng`**.
-2.  **Implementar HTML y SCSS**: Para cada componente, desarrolla el HTML y el SCSS para que coincida con el diseño de Figma.
-    -   **Mapeo de Assets**: Usa los nombres de assets del PASO 1 para encontrar los archivos reales en el contexto proporcionado (`public/images/`, `public/svg/`) y usa las rutas correctas (ej: `images/nombre-real.jpg`).
-    -   **Uso de Variables**: En los archivos SCSS de los componentes, SIEMPRE importa las variables con `@use 'variables' as v;` y úsalas como `v.$variable-name`.
+1.  **Generar Componentes (vía Terminal)**: Ejecuta el comando `ng g c components/nombre-componente` en la terminal para CADA uno de los componentes necesarios según las secciones identificadas en el PASO 1 (ejemplos: `header`, `hero`, `services`, `testimonials`, `pricing`, `team`, `footer`). **Esta es la ÚNICA excepción permitida para usar la terminal directamente para comandos `ng`**.
+2.  **Implementar HTML y SCSS**: Para cada componente, desarrolla el HTML y el SCSS para que coincida EXACTAMENTE con el diseño de Figma.
+    - **Contenido Textual**: Usa EXACTAMENTE los textos extraídos del PASO 1. NO inventar ni modificar textos.
+    - **Mapeo de Assets**: Usa los nombres de assets del PASO 1 para encontrar los archivos reales en el contexto proporcionado (`public/images/`, `public/svg/`) y usa las rutas correctas (ej: `images/nombre-real.jpg`).
+    - **Formas y Bordes**: Aplica el border-radius y border específico de CADA elemento según lo extraído en el PASO 1.
+    - **Colores Exactos**: Usa los valores hexadecimales extraídos de Figma, sin aproximaciones.
+    - **Posicionamiento**: Replica la alineación, distribución y orden exacto de los elementos.
+    - **Uso de Variables**: En los archivos SCSS de los componentes, SIEMPRE importa las variables con `@use 'variables' as v;` y úsalas como `v.$variable-name`.
 
 ### PASO 5: Ensamblaje de la Aplicación Principal
 
@@ -61,7 +88,12 @@ Convertir el frame de Figma adjunto (landing page veterinaria) a una aplicación
 
 ### PASO 6: Verificación Final
 
-1.  **Revisar Errores de Tipeo**: Antes de finalizar, realiza una revisión completa de todo el código generado (HTML, SCSS, TypeScript) para corregir cualquier error de tipeo (`typo`), sintaxis o lógica. La calidad y corrección del código son fundamentales.
+1.  **Verificar Completitud de Secciones**: Asegúrate de que TODAS las secciones identificadas en el PASO 1 estén implementadas. NO debe faltar ninguna sección del diseño.
+2.  **Verificar Textos**: Confirma que todos los textos coinciden EXACTAMENTE con los de Figma. NO debe haber textos inventados o modificados.
+3.  **Verificar Formas y Bordes**: Revisa que CADA imagen y elemento tenga el border-radius y border correcto extraído de Figma.
+4.  **Verificar Colores**: Confirma que todos los colores sean los valores hexadecimales exactos de Figma.
+5.  **Verificar Posicionamiento**: Asegúrate de que el orden, alineación y distribución de elementos coincida con Figma.
+6.  **Revisar Errores de Tipeo**: Realiza una revisión completa de todo el código generado (HTML, SCSS, TypeScript) para corregir cualquier error de tipeo (`typo`), sintaxis o lógica. La calidad y corrección del código son fundamentales.
 
 ---
 
@@ -69,19 +101,26 @@ Convertir el frame de Figma adjunto (landing page veterinaria) a una aplicación
 
 ### Extraer con Precisión Absoluta
 
-- **Layout**: Dimensiones, padding, margin, grid, breakpoints
+- **Secciones Completas**: Identificar y crear TODAS las secciones del diseño. NO omitir ninguna.
+- **Contenido Textual**: Extraer y usar EXACTAMENTE los textos de Figma. PROHIBIDO inventar contenido.
+- **Layout**: Dimensiones, padding, margin, grid, breakpoints, posicionamiento exacto
 - **Tipografía**: Familia (Inter Tight), tamaños, pesos, line-height, letter-spacing
 - **Colores**: Hex exactos, gradientes, transparencias, estados hover
-- **Imágenes**: Dimensiones, border-radius, box-shadow, aspect-ratio
+- **Imágenes**: Dimensiones, border-radius específico de CADA una, box-shadow, aspect-ratio
+- **Bordes**: Border-width, border-style, border-color, border-radius de CADA elemento
 - **Botones**: Dimensiones, padding, border-radius, estados interactivos
+- **Formas Personalizadas**: Border-radius no uniformes (valores diferentes para cada esquina)
 
 ### Elementos Críticos (No Omitir)
 
-1. **Hero Grid**: 4 imágenes con **border-radius diferenciados** (no uniforme)
-2. **Badge Hero**: Fondo naranja semi-transparente + borde naranja sólido
-3. **Features Strip**: Barra naranja horizontal con iconos de certificado
-4. **Ornamentos SVG**: Posicionamiento absoluto con rotaciones específicas. Un mismo SVG puede aparecer múltiples veces con diferentes transformaciones (rotación, escala, color)
-5. **Logo**: SVG de patita + texto "Vetcare"
+1. **Todas las Secciones del Diseño**: Implementar CADA sección visible en Figma. Verificar lista completa antes de comenzar.
+2. **Textos Exactos**: Usar los textos literales de Figma en títulos, subtítulos, párrafos, botones, etc.
+3. **Hero Grid**: 4 imágenes con **border-radius diferenciados** (no uniforme). Extraer el border-radius específico de CADA imagen.
+4. **Badge Hero**: Fondo naranja semi-transparente + borde naranja sólido
+5. **Features Strip**: Barra naranja horizontal con iconos de certificado
+6. **Ornamentos SVG**: Posicionamiento absoluto con rotaciones específicas. Un mismo SVG puede aparecer múltiples veces con diferentes transformaciones (rotación, escala, color)
+7. **Logo**: SVG de patita + texto "Vetcare"
+8. **Formas de Elementos**: Cada imagen, card, botón puede tener border-radius personalizado. NO asumir valores uniformes.
 
 ### Assets Disponibles
 
@@ -326,21 +365,47 @@ body {
 
 ## 6. Checklist de Validación
 
-- [ ] Border-radius diferenciados en imágenes hero
+### Completitud y Contenido
+
+- [ ] **TODAS las secciones del diseño de Figma están implementadas (ninguna omitida)**
+- [ ] **Todos los textos coinciden EXACTAMENTE con los de Figma (no inventados ni modificados)**
+- [ ] **Orden de secciones coincide con Figma**
+
+### Formas y Estilos
+
+- [ ] **Border-radius específico de CADA imagen extraído de Figma (NO valores uniformes)**
+- [ ] **Bordes (width, style, color) de cada elemento según Figma**
 - [ ] Badge hero con transparencia correcta
 - [ ] Features strip naranja implementada
 - [ ] Ornamentos SVG con rotaciones y transformaciones
 - [ ] Mismo SVG reutilizado con diferentes estilos (color, tamaño, rotación)
+
+### Tipografía y Colores
+
 - [ ] Tipografía Inter Tight con pesos correctos
+- [ ] **Colores exactos de Figma (valores hexadecimales precisos, NO aproximaciones)**
+
+### Posicionamiento y Dimensiones
+
+- [ ] **Posicionamiento de elementos coincide con Figma (alineación, distribución)**
+- [ ] **Dimensiones de elementos coinciden con Figma**
+- [ ] Espaciado consistente con diseño (padding, margin, gap)
+
+### Assets y Archivos
+
 - [ ] **Assets con rutas correctas: `images/archivo.jpg` y `svg/icono.svg` (SIN "assets/")**
 - [ ] **Nombres de archivos reales de `public/images/` y `public/svg/` (NO inventados)**
+
+### Variables y Configuración
+
 - [ ] **Archivo `src/styles/_variables.scss` creado con todas las variables extraídas de Figma**
 - [ ] **Uso de `@use 'variables' as v;` con alias (NUNCA `as *`)**
 - [ ] **Acceso a variables con alias: `v.$variable-name`**
 - [ ] **Todos los valores de estilos extraídos del diseño de Figma (NO valores de ejemplo)**
+
+### Componentes
+
 - [ ] Nombres de componentes respetan los generados por `ng g c`
-- [ ] Colores exactos de Figma
-- [ ] Espaciado consistente con diseño
 - [ ] Sin uso de Tailwind/frameworks CSS
 - [ ] Componentes generados con comando `ng g c`
 
